@@ -31,5 +31,9 @@ namespace SurvivingPieces
                 throw new Exception("Invalid square identifier");
             }
         }
+        public override string ToString()
+        {
+            return File.ToString() + Rank.ToString();
+        }
     }
 }

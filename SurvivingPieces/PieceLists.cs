@@ -60,7 +60,7 @@ namespace SurvivingPieces
         }
 
 
-        public int MaybeCapture(SquareIdentifier sq)
+        public int MaybeCapture(SquareIdentifier sq, int time)
         {
             var atCurrent = _currentToOrig[KeyFromSquare(sq)];
 
@@ -70,6 +70,8 @@ namespace SurvivingPieces
 
                 _origToCurrent[atCurrent] = -1;
                 _currentToOrig[KeyFromSquare(sq)] = -1;
+
+                _tod.Add(GetStringRep(atCurrent), time);
             }
 
             return atCurrent;
@@ -104,6 +106,17 @@ namespace SurvivingPieces
             }
             InitialiseStartingPieces();
         }
+        
+        private Dictionary<string, int> _tod = new Dictionary<string, int>();
+
+        public IReadOnlyDictionary<string, int> TimeOfDeath
+        {
+            get
+            {
+                return _tod;
+            }
+        }
+
 
         public List<string> GetSurvivors()
         {
