@@ -81,7 +81,7 @@ namespace SurvivingPieces
             int nGame = 0;
             int nRejected = 0;
 
-            foreach (var g1 in db)
+            foreach (var g in db)
             {
                 nGame++;
 
